@@ -10,37 +10,22 @@
 </head>
 <body>
 
-    <!-- <div style="margin-top: 10px;">
-        <label for="">Valor A: </label>
-        <input type="number" name="valorA" value="valorA" id="valorA">
-    </div>
-    <div style="margin-top: 10px;">
-        <label for="">Valor B: </label>
-        <input type="number" name="valorB" value="ValorB" id="ValorB">
-    </div>
-    <div style="margin-top: 10px;">
-        <label for="">Valor C: </label>
-        <input type="number" name="valorC" value="ValorC" id="ValorC">
-    </div> -->
-
     <div class="tamañoPrimos" id="tamanoPrimos" style="margin-top: 10px;">
         <label for="">cuantos números primos desea validar: </label>
         <input type="number" name="arrayPri" value="arrayPri" id="arrayPri">
     </div>
 
-    <div class="numeroEspecial hidden" id="numeroEspecial" style="margin-top: 10px;">
-        <label for="">Ingrese el número y miremos si es un número especial: </label>
-        <input type="number" name="numSpecial" value="numSpecial" id="numSpecial">
-    </div>
-
     <button class="btnTamanoPrimos" style="margin-top: 10px;" id="btnTamanoPrimos" onclick="calcularPrimos()">Ingresar</button>
     <button class="btnNumEspecial hidden" style="margin-top: 10px;" id="buscarEspecial" onclick="buscarNumEspecial()">Calcular</button>
 
-    <h1 class="cantidadPrimos hidden" id="cantidadPrimos"></h1>
+    <div class="esPrimo hidden" id="esPrimo"></div>
+    <div class="noEsPrimo hidden" id="noEsPrimo"></div>
+    <div class="posicionNumero hidden" id="posicionNumero"></div>
+    <div class="invertido hidden" id="invertido"></div>
+    <div class="multiXDigi hidden" id="multiXDigi"></div>
     
 
-    <div class="listaPrimos" id="listaPrimos"></div>
+    <p class="listaPrimos" id="listaPrimos"><p>
 
-    
 </body>
 </html>

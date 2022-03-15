@@ -1,84 +1,53 @@
 'use strict'
-
-// function calcular(){
-//     let a = document.getElementById("valorA").value;
-//     let b = document.getElementById("ValorB").value;
-//     let c = document.getElementById("ValorC").value;
-
-//     let operacion = Math.pow(b,2)-4*a*c;
-//     let p,q,x1,x2;
-
-//     if(operacion<0){
-//         alert("Sin raiz real");
-//     }else{
-//         p = -b/(2*a);
-//         q = Math.sqrt(operacion)/(2*a);
-//         x1 = p+q;
-//         x2 = p-q;
-//         document.write("Las dos raíces son:" + x1 + "," + x2);
-
-//         console.log(p);
-//         console.log(q);
-//         console.log(x1);
-//         console.log(x2);
-//     }
-// }
-
-let numeros = [];
-let numerosPrimos = [];
-let totalPrimosCreados = [];
-let numeroPrimo;
-let cantidadPrimos;
+let numeroIngresado = 0;
+let contadorDivisores = 0;
+let totalPrimos = [];
+let i = 1;
 
 
 function calcularPrimos(){
 
-    for(let i=2; i<1000; i++){
-        numeros = [i];
-    }
-    cantidadPrimos = document.getElementById('arrayPri').value;
-    
-     //crea la cantida de primos que se requiera
-     for(let o=0; o<cantidadPrimos; o++){
-        if(validaPrimos(o)){
-            totalPrimosCreados.push(o);
+    //Valor ingresado por el usuario
+    numeroIngresado = document.getElementById('arrayPri').value;
+
+
+    for (let x=0;x<=numeroIngresado;x++) {
+        if(esPrimo(x)){
+            totalPrimos.push(x); 
+            console.log(totalPrimos);
+
+            if(totalPrimos.find(t => t == numeroIngresado) && numeroIngresado>2){
+                document.getElementById('esPrimo').classList.toggle('hidden');
+                document.getElementById('esPrimo').innerHTML = `<strong>El número ingresado ${numeroIngresado}</strong>: ES un numero primo`;
+
+                document.getElementById('posicionNumero').classList.toggle('hidden');
+                document.getElementById('posicionNumero').innerHTML = `<strong>Posición del número dentro de los primos:</strong> ${totalPrimos.length}`;
+                
+                console.log(numeroIngresado>9);
+
+                if(numeroIngresado>9){
+                    let numeroXDigito =  numeroIngresado.split("");
+                    let multiXDigito = numeroXDigito[0] * numeroXDigito[1];
+                    
+                    document.getElementById('multiXDigi').classList.toggle('hidden');
+                    document.getElementById('multiXDigi').innerHTML = `<strong>El digito ingresado, descompuesto en digitos individuales es:</strong> ${numeroXDigito} y el producto es <strong>${multiXDigito}</strong>`;
+                }
+                numeroIngresado  = 0;
+                
+            }else{
+                console.log(totalPrimos.find(t => t == numeroIngresado));
+                document.getElementById('noEsPrimo').classList.toggle('hidden');
+                document.getElementById('noEsPrimo').innerHTML = `<strong>El número ingresado ${numeroIngresado}</strong>: NO es un numero primo`;
+
+            }
         }
     }
 
-    //Pone la clase si no la tiene y la quita si lo tiene
-    document.getElementById('tamanoPrimos').classList.toggle('hidden');
-    document.getElementById('btnTamanoPrimos').classList.toggle('hidden');
-    document.getElementById('numeroEspecial').classList.toggle('hidden');
-    document.getElementById('buscarEspecial').classList.toggle('hidden');
-    document.getElementById('cantidadPrimos').classList.toggle('hidden');
-    document.getElementById('cantidadPrimos').innerHTML = `numeros primos resultanes de el valor ingresado ${cantidadPrimos} <br> ${totalPrimosCreados}`;
+
 }
 
-function buscarNumEspecial(){
-
-    let numeroUnico = document.getElementById("numSpecial").value;
-
-   
-
-   let j = totalPrimosCreados.find(c => c == numeroUnico);
-
-    console.log(j);
-
-    
-
-    // if(validaPrimos(numeroUnico)){
-    //     numerosPrimos.push(numeroUnico);
-    //     console.log(numerosPrimos);
-    // }
-
-    // document.getElementById('listaPrimos').innerHTML = `${numerosPrimos}`;
-}
-
-function validaPrimos(numero){
-    for(let j = 2; j<numeros; j++){
-        if(numero % j === 0){
-            return false;
-        }
-        return numero !== 1;
-    }
-}
+function esPrimo(numero) {
+    for(let i = 2,raiz=Math.sqrt(numero); i <= raiz; i++)
+        if(numero % i === 0) return false;
+    return numero > 1;
+}  

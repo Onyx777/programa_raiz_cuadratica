@@ -5,3 +5,7 @@
 .show{
     display: block;
 }
+
+.cantidadPrimos{
+    word-wrap: break-word;
+}
